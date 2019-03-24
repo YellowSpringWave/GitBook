@@ -1,6 +1,6 @@
 # Git 常用操作命令
 
-##[Git 官网地址](https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-Git-%E7%AE%80%E5%8F%B2)
+### [Git 官网地址](https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-Git-%E7%AE%80%E5%8F%B2)
 
 ## 使用之前需要做的
 
@@ -20,16 +20,12 @@
 
 ## 建Git仓库
 
-**1. 把已经有的项目放入git管理 **
+- **把已经有的项目放入git管理**
+  - `$ cd 指定文件夹` 		`$ git init`
+- **新建的项目直接使用git管理**
+  - `$ cd 某个文件夹`		`$ git init your_project_name` Git会在该目录下建一个同名的文件夹，然后就可以进入你的该项目了 
 
-- `$ cd 指定文件夹` 		`$ git init`
-
-**2.新建的项目直接使用git管理 **
-
-- `$ cd 某个文件夹`		`$ git init your_project_name` Git会在该目录下建一个同名的文件夹
-- 然后就可以进入你的该项目了 
-
-###小测试
+## 小测试
 
 ​	现在我新建一个README.md文件，然后    `$ git commit -m 'add readme'`，那么 Git会报错 _untracked files_
 
@@ -37,7 +33,7 @@
 
 
 
-##向仓库中添加文件
+## 向仓库中添加文件
 
 
 
@@ -47,7 +43,7 @@
 
 ​	暂存区，顾名思义暂时存储，就是文件现在已经给git管理了，但是还没正式提交，你可以回退
 
-###添加操作
+## 添加操作演示
 
 - **手动添加了index.html文件，和 images/git-logo的图片**
   - `$ git status  `查看当前状态，发现新增的两个文件 untracked files
@@ -71,18 +67,25 @@ _注意：对于添加操作，我们工作比如在工作目录里面新增或�
 
 
 
+## 添加操作2
+
+- `$ git add .`增加全部
+- `$ git commit -am ''`不用add，直接将工作区的提交
+
+
+
 ## 给文件重命名
 
 ###我们先进行传统的mv操作，也就是Linux的mv操作命令进行文件重命名
 
 - 分三步
 
-  1.  `$ mv README.md readme.md` ,这个时候git status会是     一个 untracked files: readme.md ;
+  + `$ mv README.md readme.md` ,这个时候git status会是     一个 untracked files: readme.md ;
 
   另一个是deleted：README.md，因此我们需要将这两个变动都进行暂存区的对应操作。
 
-  2. `$ git add readme.md`
-  3. `$ git rm README.md`  这个时候的git status就会是绿色 ：renamed : README.md  -> readme.md
+  + `$ git add readme.md`
+  + `$ git rm README.md`  这个时候的git status就会是绿色 ：renamed : README.md  -> readme.md
 
 - 现在我们用 git 的重命名方式来进行 **合三为一**
 
@@ -91,14 +94,17 @@ _注意：对于添加操作，我们工作比如在工作目录里面新增或�
   * 然后提交 **commit**
 
 
+## Git log 查看版本历史
 
-##Git log 查看版本历史
-
-- 让log更整洁一点吧
+- 让log更整洁一点吧，**仅显示当前分支的**
   - `$ git log --oneline`
 - 我只看最近的几个log
   - `$ git log -n2 --oneline`
 - 为了演示 git log  效果，让我们先来整一个分支吧
   + `$ git branch -v`	发现目前只有一个 master 分支
-  + `$ git checkout -b temp XXXXXXXXXX`   这个叫 **创建并切换 **分支，**并且是基于XXX版本的**
-- ​
+  + `$ git checkout -b temp XXXXXXXXXX`   这个叫 **创建并切换**分支，**并且是基于XXX版本的**
+- 显示所有分支的log记录
+  - `$ git log --all`
+
+- 显示所有分支log 图形化
+  - `$ git log --all --graph`
